@@ -18,6 +18,8 @@ public class FindCommand extends Command {
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
     private final Set<String> keywords;
+    
+    public static final boolean IS_MUTATING = false;
 
     public FindCommand(Set<String> keywords) {
         this.keywords = keywords;
@@ -51,6 +53,11 @@ public class FindCommand extends Command {
             }
         }
         return matchedPersons;
+    }
+
+    @Override
+    public boolean isMutating() {
+        return IS_MUTATING;
     }
 
 }
