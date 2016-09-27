@@ -2,6 +2,7 @@ package seedu.addressbook.commands;
 
 import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.AddressBook;
+import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
 import java.util.List;
@@ -56,6 +57,11 @@ public abstract class Command {
      */
     protected ReadOnlyPerson getTargetPerson() throws IndexOutOfBoundsException {
         return relevantPersons.get(getTargetIndex() - DISPLAYED_INDEX_OFFSET);
+    }
+    
+    protected Person getWriteablePerson() throws IndexOutOfBoundsException {
+        ReadOnlyPerson readPerson = relevantPersons.get(getTargetIndex() - DISPLAYED_INDEX_OFFSET);
+        return null;
     }
 
     public int getTargetIndex() {
