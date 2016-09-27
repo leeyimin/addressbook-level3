@@ -52,7 +52,6 @@ public class EditCommand extends Command {
     public CommandResult execute() {
         try {
             final Person target = getWriteablePerson();
-            addressBook.removePerson(target);
             return new CommandResult(String.format(MESSAGE_SUCCESS, target));
 
         } catch (IndexOutOfBoundsException ie) {

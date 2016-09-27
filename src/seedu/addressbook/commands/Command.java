@@ -4,6 +4,7 @@ import seedu.addressbook.common.Messages;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.ReadOnlyPerson;
+import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 
 import java.util.List;
 
@@ -59,9 +60,9 @@ public abstract class Command {
         return relevantPersons.get(getTargetIndex() - DISPLAYED_INDEX_OFFSET);
     }
     
-    protected Person getWriteablePerson() throws IndexOutOfBoundsException {
+    protected Person getWriteablePerson() throws IndexOutOfBoundsException, PersonNotFoundException {
         ReadOnlyPerson readPerson = relevantPersons.get(getTargetIndex() - DISPLAYED_INDEX_OFFSET);
-        return null;
+        return addressBook.getWriteablePerson(readPerson);
     }
 
     public int getTargetIndex() {
