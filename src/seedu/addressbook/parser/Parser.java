@@ -27,7 +27,7 @@ public class Parser {
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
 
     public static final Pattern EDIT_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
-            Pattern.compile("(?<targetIndex>.+)( ?<name>[^/]+)?"
+            Pattern.compile("(?<targetIndex>[0-9]+)( (?<name>[^/]+))?"
                     + "( (?<isPhonePrivate>p?)p/(?<phone>[^/]+))?"
                     + "( (?<isEmailPrivate>p?)e/(?<email>[^/]+))?"
                     + "( (?<isAddressPrivate>p?)a/(?<address>[^/]+))?");
@@ -108,7 +108,7 @@ public class Parser {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
         }
         try {
-            final int targetIndex = parseArgsAsDisplayedIndex(args);
+            final int targetIndex = parseArgsAsDisplayedIndex(matcher.group("targetIndex"));
             return new EditCommand(
                     targetIndex,
                     
@@ -165,7 +165,7 @@ public class Parser {
      * Checks whether the private prefix of a contact detail in the add command's arguments string is present.
      */
     private static boolean isPrivatePrefixPresent(String matchedPrefix) {
-        return matchedPrefix.equals("p");
+        return matchedPrefix != null && matchedPrefix.equals("p");
     }
 
     /**
