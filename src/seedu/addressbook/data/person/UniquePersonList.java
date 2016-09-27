@@ -112,6 +112,19 @@ public class UniquePersonList implements Iterable<Person> {
     public void clear() {
         internalList.clear();
     }
+    
+    /**
+     * Return Person in internalList given ReadOnlyPerson.
+     */
+    public Person getPerson(ReadOnlyPerson person) throws PersonNotFoundException {
+        if(contains(person)){
+            return (Person) person;
+        }
+        else{
+            throw new PersonNotFoundException();
+        }
+    }
+    
 
     @Override
     public Iterator<Person> iterator() {
