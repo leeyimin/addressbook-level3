@@ -52,6 +52,18 @@ public class EditCommand extends Command {
     public CommandResult execute() {
         try {
             final Person target = getWriteablePerson();
+            if(name != null){
+                target.setName(name);
+            }
+            if(phone != null){
+                target.setPhone(phone);
+            }
+            if(email != null){
+                target.setEmail(email);
+            }
+            if(address != null){
+                target.setAddress(address);
+            }
             return new CommandResult(String.format(MESSAGE_SUCCESS, target));
 
         } catch (IndexOutOfBoundsException ie) {
