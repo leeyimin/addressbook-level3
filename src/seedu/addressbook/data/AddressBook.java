@@ -130,7 +130,15 @@ public class AddressBook {
         allPersons.clear();
         allTags.clear();
     }
-
+    
+    /**
+     * Returns a writeable Person in allPersons given its ReadOnlyPerson
+     * @throws PersonNotFoundException 
+     */
+    public Person getWriteablePerson(ReadOnlyPerson person) throws PersonNotFoundException{
+        return allPersons.getPerson(person);
+    }
+    
     /**
      * Defensively copied UniquePersonList of all persons in the address book at the time of the call.
      */
