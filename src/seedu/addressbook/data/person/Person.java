@@ -54,6 +54,34 @@ public class Person implements ReadOnlyPerson {
         return address;
     }
 
+    /**
+     * @param name the name to set
+     */
+    public void setName(Name name) {
+        this.name = name;
+    }
+
+    /**
+     * @param phone the phone to set
+     */
+    public void setPhone(Phone phone) {
+        this.phone = phone;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(Email email) {
+        this.email = email;
+    }
+
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     @Override
     public UniqueTagList getTags() {
         return new UniqueTagList(tags);
